@@ -104,7 +104,7 @@ export default class Encryption {
 		const options = {
 			message: openpgp.message.fromText(messageString),
 			publicKeys: (await openpgp.key.readArmored(receiverPublicKey)).keys, // for encryption
-			privateKeys: [privKeyObj]                                 // for signing (optional)
+			privateKeys: [privKeyObj]
 		}
 
 		return openpgp.encrypt(options).then(ciphertext => {
@@ -116,9 +116,9 @@ export default class Encryption {
 		let privKeyObj = this.personalPrivateKey
 
 		const options = {
-				message: await openpgp.message.readArmored(encryptedMessage),        // parse armored message
+			message: await openpgp.message.readArmored(encryptedMessage),        // parse armored message
 			publicKeys: (await openpgp.key.readArmored(senderPublicKey)).keys,   // for verification (optional)
-			privateKeys: [privKeyObj]                                   // for decryption
+			privateKeys: [privKeyObj]
 		}
 
 		return openpgp.decrypt(options).then(plaintext => {

@@ -2,12 +2,15 @@
 	<div>
 		<top-bar title="Read Encrypted Message"></top-bar>
 		<div class="half">
-			<select v-model="selected" v-on:change="checkReady()">
+			<select v-model="selected" v-on:change="checkReady()" class="contact-list">
 				<option disabled value="">Select the sender</option>
 				<option v-for="contact in contacts" v-bind:value="contact.id">
 					{{ contact.name }}
 				</option>
 			</select>
+			<router-link to="/contacts">
+				<button class="btn-light"><i class="fas fa-user-plus"></i></button>
+			</router-link>
 
 			<textarea v-model="message" placeholder="Past your encrypted message" v-on:input="checkReady()"></textarea>
 			<br/>
@@ -96,8 +99,28 @@
 		resize: none;
 	}
 
-	button {
+	.contact-list {
+		width: 85%;
+	}
+
+	button:not(.btn-light) {
 		width: 100%;
+	}
+
+	.btn-light {
+		background-color: white;
+		color: #2980B9;
+		border: 1px solid #2980B9;
+		border-radius: 5px;
+		height: 30px;
+		float: right;
+		padding: 5px;
+		width: 10%;
+	}
+
+	.btn-light:hover {
+		background-color: #2980B9;
+		color: white;
 	}
 
 	.decryptedMessage {
@@ -109,6 +132,7 @@
 		font-size: 15px;
 		margin-bottom: 10px;
 		overflow: auto;
+		background-color: white;
 	}
 
 	pre {

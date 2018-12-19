@@ -45,19 +45,24 @@
 	@import './assets/main.css';
 
 	.sidenav {
-		background: #4fc08d;
+		background: #2C3E50;
 		float: left;
 		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		width: 10%;
+
+		box-shadow: 1px 0 0 rgba(0, 0, 0, 0.25);
+		transition: background-color 0.3s ease-in-out;
+
+
 	}
 
 	.sidenav a {
 		text-align: center;
 		text-decoration: none;
 		font-size: 30px;
-		color: white;
+		color: #6a869a;
 		display: block;
 		margin: 30px;
 	}
